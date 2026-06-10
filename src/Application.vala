@@ -140,6 +140,10 @@ public class Badger.Application : Gtk.Application {
     }
 
     private static void request_autostart () {
+#if WINDOWS
+        // libportal is unavailable on Windows; autostart via the portal is a no-op.
+        stdout.printf ("\n🚀 Autostart request skipped (no portal on Windows)");
+#else
         Xdp.Portal portal = new Xdp.Portal ();
         GenericArray<weak string> cmd = new GenericArray<weak string> ();
         cmd.add ("com.github.elfenware.badger");
@@ -153,6 +157,7 @@ public class Badger.Application : Gtk.Application {
             null);
 
         stdout.printf ("\n🚀 Requested autostart for Badger");
+#endif
     }
 
     private Reminder[] set_up_reminders () {

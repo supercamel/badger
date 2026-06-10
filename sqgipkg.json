@@ -130,10 +130,12 @@
       "mingw-w64-x86_64-vala",
       "mingw-w64-x86_64-gtk4",
       "mingw-w64-x86_64-granite7",
-      "mingw-w64-x86_64-libportal",
+      "mingw-w64-x86_64-librsvg",
       "mingw-w64-x86_64-gsettings-desktop-schemas",
       "mingw-w64-x86_64-hicolor-icon-theme",
       "mingw-w64-x86_64-adwaita-icon-theme",
+      "mingw-w64-x86_64-adwaita-icon-theme-legacy",
+      "mingw-w64-x86_64-elementary-icon-theme",
       "mingw-w64-x86_64-gtk-elementary-theme"
     ],
     "native_projects": [
@@ -141,11 +143,28 @@
         "name": "badger",
         "dir": ".",
         "build": [
-          "meson setup \"$SQGI_WINDOWS_BUILD_DIR\" --wipe --prefix \"$SQGI_WINDOWS_PREFIX\" --buildtype=release --cross-file \"$SQGI_MESON_CROSS_FILE\" || meson setup \"$SQGI_WINDOWS_BUILD_DIR\" --prefix \"$SQGI_WINDOWS_PREFIX\" --buildtype=release --cross-file \"$SQGI_MESON_CROSS_FILE\"",
+          "meson setup \"$SQGI_WINDOWS_BUILD_DIR\" --wipe --prefix \"$SQGI_WINDOWS_PREFIX\" --buildtype=release -Dwindows=true --cross-file \"$SQGI_MESON_CROSS_FILE\" || meson setup \"$SQGI_WINDOWS_BUILD_DIR\" --prefix \"$SQGI_WINDOWS_PREFIX\" --buildtype=release -Dwindows=true --cross-file \"$SQGI_MESON_CROSS_FILE\"",
           "meson compile -C \"$SQGI_WINDOWS_BUILD_DIR\""
         ],
         "files": [
-          "data/badger.gschema.xml=share/glib-2.0/schemas/com.github.elfenware.badger.gschema.xml"
+          "data/badger.gschema.xml=share/glib-2.0/schemas/com.github.elfenware.badger.gschema.xml",
+          "data/icons/hicolor/16.svg=share/icons/hicolor/16x16/apps/com.github.elfenware.badger.svg",
+          "data/icons/hicolor/24.svg=share/icons/hicolor/24x24/apps/com.github.elfenware.badger.svg",
+          "data/icons/hicolor/32.svg=share/icons/hicolor/32x32/apps/com.github.elfenware.badger.svg",
+          "data/icons/hicolor/48.svg=share/icons/hicolor/48x48/apps/com.github.elfenware.badger.svg",
+          "data/icons/hicolor/64.svg=share/icons/hicolor/64x64/apps/com.github.elfenware.badger.svg",
+          "data/icons/hicolor/128.svg=share/icons/hicolor/128x128/apps/com.github.elfenware.badger.svg",
+          "data/icons/hicolor/256.svg=share/icons/hicolor/256x256/apps/com.github.elfenware.badger.svg",
+          "data/icons/hicolor/512.svg=share/icons/hicolor/512x512/apps/com.github.elfenware.badger.svg",
+          "data/icons/hicolor/16.svg=share/icons/hicolor/16x16@2/apps/com.github.elfenware.badger.svg",
+          "data/icons/hicolor/24.svg=share/icons/hicolor/24x24@2/apps/com.github.elfenware.badger.svg",
+          "data/icons/hicolor/32.svg=share/icons/hicolor/32x32@2/apps/com.github.elfenware.badger.svg",
+          "data/icons/hicolor/48.svg=share/icons/hicolor/48x48@2/apps/com.github.elfenware.badger.svg",
+          "data/icons/hicolor/64.svg=share/icons/hicolor/64x64@2/apps/com.github.elfenware.badger.svg",
+          "data/icons/hicolor/128.svg=share/icons/hicolor/128x128@2/apps/com.github.elfenware.badger.svg",
+          "data/icons/hicolor/256.svg=share/icons/hicolor/256x256@2/apps/com.github.elfenware.badger.svg",
+          "data/icons/hicolor/512.svg=share/icons/hicolor/512x512@2/apps/com.github.elfenware.badger.svg",
+          "data/icons/scalable.svg=share/icons/hicolor/scalable/apps/com.github.elfenware.badger.svg"
         ]
       }
     ],

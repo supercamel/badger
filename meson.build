@@ -1,10 +1,23 @@
 # project name and programming language
-project('com.github.elfenware.badger', 'vala', 'c', version: '5.0.3')
+project('com.github.elfenware.badger', 'vala', 'c', version: '5.0.4')
 
 gnome = import('gnome')
 i18n = import('i18n')
 
 add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (meson.project_name()), language:'c')
+
+#================================
+# Windows builds have no libportal. Detect a Windows host (set automatically
+# when cross-compiling with a Windows cross-file) or an explicit -Dwindows=true.
+vala_flags = []
+windows = get_option('windows')
+if host_machine.system() == 'windows'
+    windows = true
+endif
+
+if windows
+    vala_flags += ['--define', 'WINDOWS']
+endif
 
 
 #================================
@@ -56,6 +69,18 @@ gresource_h = custom_target(
 
 gresource = [gresource_c, gresource_h]
 
+badger_deps = [
+    dependency ('glib-2.0'),
+    dependency('granite-7'),
+    dependency('gobject-2.0'),
+    dependency('gtk4'),
+]
+
+# libportal is not available on Windows; skip it there.
+if not windows
+    badger_deps += dependency('libportal')
+endif
+
 executable(
     meson.project_name(),
     gresource,
@@ -65,13 +90,8 @@ executable(
     'src/Reminder.vala',
     'src/MainGrid.vala',
     'src/Marks.vala',
-    dependencies: [
-        dependency ('glib-2.0'),
-        dependency('granite-7'),
-        dependency('gobject-2.0'),
-        dependency('gtk4'),
-        dependency('libportal')
-    ],
+    dependencies: badger_deps,
+    vala_args: vala_flags,
     install : true
 )
 

@@ -1,0 +1,1 @@
+option('windows', type: 'boolean', value: false, description: 'If this is a Windows build. Skips libportal, which is unavailable on Windows. Switched on automatically on Windows host machines.')
