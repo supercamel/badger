@@ -1,0 +1,162 @@
+{
+  "name": "Badger",
+  "entry": {
+    "type": "native",
+    "linux": "build-linux-x86_64/com.github.elfenware.badger",
+    "windows": "build-windows-x86_64/com.github.elfenware.badger.exe"
+  },
+  "linux": {
+    "arches": [
+      {
+        "arch": "x86_64",
+        "build_dir": "build-linux-x86_64",
+        "entry_linux": "build-linux-x86_64/com.github.elfenware.badger",
+        "deb": {
+          "download": true,
+          "packages": [
+            "libgtk-4-dev",
+            "gir1.2-gtk-4.0",
+            "libgranite-7-dev",
+            "gir1.2-granite-7.0",
+            "libglib2.0-dev",
+            "libportal-dev",
+            "gobject-introspection",
+            "libgirepository1.0-dev",
+            "adwaita-icon-theme",
+            "hicolor-icon-theme",
+            "librsvg2-common",
+            "shared-mime-info"
+          ]
+        },
+        "inherit_native_projects": false,
+        "native_projects": [
+          {
+            "name": "badger",
+            "dir": ".",
+            "build": [
+              "meson setup \"$SQGI_LINUX_BUILD_DIR\" --wipe --prefix /usr --buildtype=release ${SQGI_LINUX_MESON_CROSS_FILE:+--cross-file \"$SQGI_LINUX_MESON_CROSS_FILE\"} || meson setup \"$SQGI_LINUX_BUILD_DIR\" --prefix /usr --buildtype=release ${SQGI_LINUX_MESON_CROSS_FILE:+--cross-file \"$SQGI_LINUX_MESON_CROSS_FILE\"}",
+              "meson compile -C \"$SQGI_LINUX_BUILD_DIR\""
+            ],
+            "files": [
+              "data/badger.gschema.xml=usr/share/glib-2.0/schemas/com.github.elfenware.badger.gschema.xml",
+              "build-linux-x86_64/data/com.github.elfenware.badger.desktop=usr/share/applications/com.github.elfenware.badger.desktop",
+              "build-linux-x86_64/data/com.github.elfenware.badger.metainfo.xml=usr/share/metainfo/com.github.elfenware.badger.metainfo.xml",
+              "data/icons/hicolor/16.svg=usr/share/icons/hicolor/16x16/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/24.svg=usr/share/icons/hicolor/24x24/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/32.svg=usr/share/icons/hicolor/32x32/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/48.svg=usr/share/icons/hicolor/48x48/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/64.svg=usr/share/icons/hicolor/64x64/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/128.svg=usr/share/icons/hicolor/128x128/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/256.svg=usr/share/icons/hicolor/256x256/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/512.svg=usr/share/icons/hicolor/512x512/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/16.svg=usr/share/icons/hicolor/16x16@2/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/24.svg=usr/share/icons/hicolor/24x24@2/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/32.svg=usr/share/icons/hicolor/32x32@2/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/48.svg=usr/share/icons/hicolor/48x48@2/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/64.svg=usr/share/icons/hicolor/64x64@2/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/128.svg=usr/share/icons/hicolor/128x128@2/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/256.svg=usr/share/icons/hicolor/256x256@2/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/512.svg=usr/share/icons/hicolor/512x512@2/apps/com.github.elfenware.badger.svg",
+              "data/icons/scalable.svg=usr/share/icons/hicolor/scalable/apps/com.github.elfenware.badger.svg"
+            ]
+          }
+        ]
+      },
+      {
+        "arch": "aarch64",
+        "build_dir": "build-linux-aarch64",
+        "entry_linux": "build-linux-aarch64/com.github.elfenware.badger",
+        "deb": {
+          "download": true,
+          "packages": [
+            "libgtk-4-dev",
+            "gir1.2-gtk-4.0",
+            "libgranite-7-dev",
+            "gir1.2-granite-7.0",
+            "libglib2.0-dev",
+            "libportal-dev",
+            "gobject-introspection",
+            "libgirepository1.0-dev",
+            "adwaita-icon-theme",
+            "hicolor-icon-theme",
+            "librsvg2-common",
+            "shared-mime-info"
+          ]
+        },
+        "inherit_native_projects": false,
+        "native_projects": [
+          {
+            "name": "badger",
+            "dir": ".",
+            "build": [
+              "meson setup \"$SQGI_LINUX_BUILD_DIR\" --wipe --prefix /usr --buildtype=release ${SQGI_LINUX_MESON_CROSS_FILE:+--cross-file \"$SQGI_LINUX_MESON_CROSS_FILE\"} || meson setup \"$SQGI_LINUX_BUILD_DIR\" --prefix /usr --buildtype=release ${SQGI_LINUX_MESON_CROSS_FILE:+--cross-file \"$SQGI_LINUX_MESON_CROSS_FILE\"}",
+              "meson compile -C \"$SQGI_LINUX_BUILD_DIR\""
+            ],
+            "files": [
+              "data/badger.gschema.xml=usr/share/glib-2.0/schemas/com.github.elfenware.badger.gschema.xml",
+              "build-linux-aarch64/data/com.github.elfenware.badger.desktop=usr/share/applications/com.github.elfenware.badger.desktop",
+              "build-linux-aarch64/data/com.github.elfenware.badger.metainfo.xml=usr/share/metainfo/com.github.elfenware.badger.metainfo.xml",
+              "data/icons/hicolor/16.svg=usr/share/icons/hicolor/16x16/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/24.svg=usr/share/icons/hicolor/24x24/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/32.svg=usr/share/icons/hicolor/32x32/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/48.svg=usr/share/icons/hicolor/48x48/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/64.svg=usr/share/icons/hicolor/64x64/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/128.svg=usr/share/icons/hicolor/128x128/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/256.svg=usr/share/icons/hicolor/256x256/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/512.svg=usr/share/icons/hicolor/512x512/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/16.svg=usr/share/icons/hicolor/16x16@2/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/24.svg=usr/share/icons/hicolor/24x24@2/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/32.svg=usr/share/icons/hicolor/32x32@2/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/48.svg=usr/share/icons/hicolor/48x48@2/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/64.svg=usr/share/icons/hicolor/64x64@2/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/128.svg=usr/share/icons/hicolor/128x128@2/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/256.svg=usr/share/icons/hicolor/256x256@2/apps/com.github.elfenware.badger.svg",
+              "data/icons/hicolor/512.svg=usr/share/icons/hicolor/512x512@2/apps/com.github.elfenware.badger.svg",
+              "data/icons/scalable.svg=usr/share/icons/hicolor/scalable/apps/com.github.elfenware.badger.svg"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "windows": {
+    "msys2_prefix": "mingw64",
+    "gdk_backend": "win32",
+    "gtk_theme": "io.elementary.stylesheet.blueberry",
+    "gtk_icon_theme": "Adwaita",
+    "gtk_font_name": "Inter Variable Text 9",
+    "build_dir": "build-windows-x86_64",
+    "packages": [
+      "mingw-w64-x86_64-vala",
+      "mingw-w64-x86_64-gtk4",
+      "mingw-w64-x86_64-granite7",
+      "mingw-w64-x86_64-libportal",
+      "mingw-w64-x86_64-gsettings-desktop-schemas",
+      "mingw-w64-x86_64-hicolor-icon-theme",
+      "mingw-w64-x86_64-adwaita-icon-theme",
+      "mingw-w64-x86_64-gtk-elementary-theme"
+    ],
+    "native_projects": [
+      {
+        "name": "badger",
+        "dir": ".",
+        "build": [
+          "meson setup \"$SQGI_WINDOWS_BUILD_DIR\" --wipe --prefix \"$SQGI_WINDOWS_PREFIX\" --buildtype=release --cross-file \"$SQGI_MESON_CROSS_FILE\" || meson setup \"$SQGI_WINDOWS_BUILD_DIR\" --prefix \"$SQGI_WINDOWS_PREFIX\" --buildtype=release --cross-file \"$SQGI_MESON_CROSS_FILE\"",
+          "meson compile -C \"$SQGI_WINDOWS_BUILD_DIR\""
+        ],
+        "files": [
+          "data/badger.gschema.xml=share/glib-2.0/schemas/com.github.elfenware.badger.gschema.xml"
+        ]
+      }
+    ],
+    "nsis_options": {
+      "installer_name": "Badger-Setup.exe",
+      "install_dir": "$LOCALAPPDATA\\Programs\\com.github.elfenware.badger",
+      "request_execution_level": "user",
+      "desktop_shortcut": true,
+      "start_menu_shortcut": true,
+      "start_menu_folder": "Badger",
+      "uninstall_registry": true
+    }
+  }
+}
