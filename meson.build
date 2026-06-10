@@ -1,5 +1,5 @@
 # project name and programming language
-project('com.github.elfenware.badger', 'vala', 'c', version: '5.0.1')
+project('com.github.elfenware.badger', 'vala', 'c', version: '5.0.3')
 
 gnome = import('gnome')
 i18n = import('i18n')
@@ -21,11 +21,40 @@ config_file = configure_file(
 )
 
 # Le stylesheet
-gresource = gnome.compile_resources(
-    'gresource',
-    'data' / 'gresource.xml',
-    source_dir: 'data'
+# Use find_program with native: true so cross builds (e.g. Windows via msys2)
+# use the host glib-compile-resources instead of the broken gio-2.0 tool
+# variable that points at a nonexistent path.
+glib_compile_resources = find_program('glib-compile-resources', native: true)
+
+gresource_c = custom_target(
+    'gresource_c',
+    input: 'data' / 'gresource.xml',
+    output: 'gresource.c',
+    command: [
+        glib_compile_resources,
+        '@INPUT@',
+        '--sourcedir', meson.current_source_dir() / 'data',
+        '--generate-source',
+        '--target', '@OUTPUT@',
+        '--dependency-file', '@DEPFILE@',
+    ],
+    depfile: 'gresource.c.d',
 )
+
+gresource_h = custom_target(
+    'gresource_h',
+    input: 'data' / 'gresource.xml',
+    output: 'gresource.h',
+    command: [
+        glib_compile_resources,
+        '@INPUT@',
+        '--sourcedir', meson.current_source_dir() / 'data',
+        '--generate-header',
+        '--target', '@OUTPUT@',
+    ],
+)
+
+gresource = [gresource_c, gresource_h]
 
 executable(
     meson.project_name(),
